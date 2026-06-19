@@ -11,12 +11,12 @@
 -- luaVersion : The LuaVersion of the Script - Currently Supported : Lua51 and LuaU
 --
 
-local Tokenizer = require("prometheus.tokenizer");
-local Enums = require("prometheus.enums");
-local util = require("prometheus.util");
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local logger = require("logger");
+local Tokenizer = require("./tokenizer");
+local Enums = require("./enums");
+local util = require("./util");
+local Ast = require("./ast");
+local Scope = require("./scope");
+local logger = require("../logger");
 
 local AstKind = Ast.AstKind;
 

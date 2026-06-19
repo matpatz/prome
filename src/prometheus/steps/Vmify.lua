@@ -5,8 +5,8 @@
 -- This Script provides a Complex Obfuscation Step that will compile the entire Script to  a fully custom bytecode that does not share it's instructions
 -- with lua, making it much harder to crack than other lua obfuscators
 
-local Step = require("prometheus.step");
-local Compiler = require("prometheus.compiler.compiler");
+local Step = require("../step");
+local Compiler = require("../compiler/compiler");
 
 local Vmify = Step:extend();
 Vmify.Description = "This Step will Compile your script into a fully-custom (not a half custom like other lua obfuscators) Bytecode Format and emit a vm for executing it.";

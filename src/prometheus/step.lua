@@ -4,8 +4,8 @@
 --
 -- This Script provides the base class for Obfuscation Steps
 
-local logger = require("logger");
-local util = require("prometheus.util");
+local logger = require("../logger");
+local util = require("./util");
 
 local lookupify = util.lookupify;
 

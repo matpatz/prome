@@ -5,25 +5,20 @@
 -- This Script provides a configurable obfuscation pipeline that can obfuscate code using different modules
 -- These modules can simply be added to the pipeline.
 
-local Enums = require("prometheus.enums");
-local util = require("prometheus.util");
-local Parser = require("prometheus.parser");
-local Unparser = require("prometheus.unparser");
-local logger = require("logger");
+local Enums = require("./enums");
+local util = require("./util");
+local Parser = require("./parser");
+local Unparser = require("./unparser");
+local logger = require("../logger");
 
-local NameGenerators = require("prometheus.namegenerators");
+local NameGenerators = require("./namegenerators");
 
-local Steps = require("prometheus.steps");
+local Steps = require("./steps");
 local LuaVersion = Enums.LuaVersion;
 
--- On Windows, os.clock can be used. On other systems, os.time must be used for benchmarking.
-local isWindows = package and package.config and type(package.config) == "string" and package.config:sub(1,1) == "\\";
+-- Lune: use os.clock() universally (os.time() only has second granularity)
 local function gettime()
-	if isWindows then
-		return os.clock();
-	else
-		return os.time();
-	end
+	return os.clock();
 end
 
 local Pipeline = {
@@ -164,30 +159,25 @@ function Pipeline:apply(code, filename)
 	if(self.Seed > 0) then
 		math.randomseed(self.Seed);
 	else
-		--> use secure random number generator
+		--> Lune: use process.exec to call openssl for a secure seed
 		local success, seed = pcall(function()
-			local seedStr =  io.popen("openssl rand -hex 12"):read("*a"):gsub("\n", "")..""
+			local process = require("@lune/process");
+			local result = process.exec("openssl", {"rand", "-hex", "12"});
+			if not result.ok then error("openssl failed") end
+			local seedStr = result.stdout:gsub("\n", "");
 			local seedNum = 0;
-
-			--> NOTE: tonumber caps at 1.844674407371e+19. So we use this instead.
 			for i = 1, #seedStr do
 				local char = seedStr:sub(i, i):lower()
 				local digit = char:match("%d") and (char:byte() - 48) or (char:byte() - 87)
 				seedNum = seedNum * 16 + digit
 			end
-
-			--> Random Number Generator in Lua 5.1 is limited to 9.007199254741e+15.
-			if _VERSION == "Lua 5.1" and not jit then
-				seedNum = seedNum % 9.007199254741e+15
-			end
-
 			return seedNum
 		end)
 
 		if success then
 			math.randomseed(seed)
 		else
-			logger:warn("OpenSSL is unavailable. Falling back to unix time.");
+			logger:warn("OpenSSL is unavailable. Falling back to os.time.");
 			math.randomseed(os.time())
 		end
 	end

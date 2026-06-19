@@ -7,13 +7,13 @@
 -- TODO: Wrapper Functions
 -- TODO: Proxy Object for indexing: e.g: ARR[X] becomes ARR + X
 
-local Step = require("prometheus.step");
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local visitast = require("prometheus.visitast");
-local util = require("prometheus.util")
-local Parser = require("prometheus.parser");
-local enums = require("prometheus.enums")
+local Step = require("../step");
+local Ast = require("../ast");
+local Scope = require("../scope");
+local visitast = require("../visitast");
+local util = require("../util")
+local Parser = require("../parser");
+local enums = require("../enums")
 
 local LuaVersion = enums.LuaVersion;
 local AstKind = Ast.AstKind;

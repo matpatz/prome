@@ -4,9 +4,9 @@
 --
 -- This Script contains the compilation of the top node, function, and block.
 
-local Ast = require("prometheus.ast");
-local util = require("prometheus.util");
-local visitast = require("prometheus.visitast");
+local Ast = require("../ast");
+local util = require("../util");
+local visitast = require("../visitast");
 
 local lookupify = util.lookupify;
 local AstKind = Ast.AstKind;

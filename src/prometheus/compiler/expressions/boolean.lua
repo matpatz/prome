@@ -4,7 +4,7 @@
 --
 -- This Script contains the expression handler for the BooleanExpression.
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 
 local expressionEvaluators = {
     [Ast.GreaterThanExpression] = function(left, right)

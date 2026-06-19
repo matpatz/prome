@@ -4,7 +4,7 @@
 --
 -- This Script provides a function for generation of confusing variable names
 
-local util = require("prometheus.util");
+local util = require("../util");
 
 local varNames = {
     "index",

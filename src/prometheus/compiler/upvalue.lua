@@ -4,9 +4,9 @@
 --
 -- This Script contains the upvalue and GC management for the compiler.
 
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local util = require("prometheus.util");
+local Ast = require("../ast");
+local Scope = require("../scope");
+local util = require("../util");
 
 local unpack = unpack or table.unpack;
 

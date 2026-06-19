@@ -4,10 +4,10 @@
 --
 -- This Script contains the container function body emission for the compiler.
 
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local util = require("prometheus.util");
-local constants = require("prometheus.compiler.constants");
+local Ast = require("../ast");
+local Scope = require("../scope");
+local util = require("../util");
+local constants = require("./constants");
 local AstKind = Ast.AstKind;
 
 local MAX_REGS = constants.MAX_REGS;

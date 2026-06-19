@@ -4,8 +4,8 @@
 --
 -- This Script provides a library for generating random strings
 
-local Ast = require("prometheus.ast")
-local utils = require("prometheus.util")
+local Ast = require("./ast")
+local utils = require("./util")
 local charset = utils.chararray("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890")
 
 local function randomString(wordsOrLen)

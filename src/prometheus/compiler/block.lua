@@ -4,8 +4,8 @@
 --
 -- Block management for the compiler
 
-local Scope = require("prometheus.scope");
-local util = require("prometheus.util");
+local Scope = require("../scope");
+local util = require("../util");
 
 local lookupify = util.lookupify;
 

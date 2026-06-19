@@ -4,9 +4,9 @@
 --
 -- This Script provides a Simple Obfuscation Step that wraps the entire Script into a function
 
-local Step = require("prometheus.step");
-local Ast = require("prometheus.ast");
-local visitast = require("prometheus.visitast");
+local Step = require("../step");
+local Ast = require("../ast");
+local visitast = require("../visitast");
 local AstKind = Ast.AstKind;
 
 local AddVararg = Step:extend();

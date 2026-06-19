@@ -5,7 +5,7 @@
 -- This Script provides a function for generation of mangled names with shuffled character order
 
 
-local util = require("prometheus.util");
+local util = require("../util");
 local chararray = util.chararray;
 
 local VarDigits = chararray("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_");

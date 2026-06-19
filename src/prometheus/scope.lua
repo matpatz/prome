@@ -4,8 +4,8 @@
 --
 -- This Script provides a class for the Scope of a Lua Script
 
-local logger = require("logger");
-local config = require("config");
+local logger = require("../logger");
+local config = require("../config");
 
 local Scope = {};
 

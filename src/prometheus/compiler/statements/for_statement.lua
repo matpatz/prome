@@ -4,8 +4,8 @@
 --
 -- This Script contains the statement handler for the ForStatement
 
-local Ast = require("prometheus.ast");
-local util = require("prometheus.util");
+local Ast = require("../../ast");
+local util = require("../../util");
 
 return function(self, statement, funcDepth)
     local scope = self.activeBlock.scope;

@@ -4,11 +4,11 @@
 --
 -- This Script provides a Obfuscation Step for putting all Locals into Proxy Objects
 
-local Step = require("prometheus.step");
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local visitast = require("prometheus.visitast");
-local RandomLiterals = require("prometheus.randomLiterals")
+local Step = require("../step");
+local Ast = require("../ast");
+local Scope = require("../scope");
+local visitast = require("../visitast");
+local RandomLiterals = require("../randomLiterals")
 
 local AstKind = Ast.AstKind;
 

@@ -10,11 +10,11 @@
 -- Settings Object:
 -- luaVersion : The LuaVersion of the Script
 
-local config = require("config");
-local Ast = require("prometheus.ast");
-local Enums = require("prometheus.enums");
-local util = require("prometheus.util");
-local logger = require("logger");
+local config = require("../config");
+local Ast = require("./ast");
+local Enums = require("./enums");
+local util = require("./util");
+local logger = require("../logger");
 
 local lookupify = util.lookupify;
 local LuaVersion = Enums.LuaVersion;

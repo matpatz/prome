@@ -5,9 +5,9 @@
 -- This Script provides a collection of name generators for Prometheus.
 
 return {
-	Mangled = require("prometheus.namegenerators.mangled");
-	MangledShuffled = require("prometheus.namegenerators.mangled_shuffled");
-	Il = require("prometheus.namegenerators.Il");
-	Number = require("prometheus.namegenerators.number");
-	Confuse = require("prometheus.namegenerators.confuse");
+	Mangled = require("./namegenerators/mangled");
+	MangledShuffled = require("./namegenerators/mangled_shuffled");
+	Il = require("./namegenerators/Il");
+	Number = require("./namegenerators/number");
+	Confuse = require("./namegenerators/confuse");
 }

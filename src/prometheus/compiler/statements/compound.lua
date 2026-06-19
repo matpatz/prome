@@ -4,7 +4,7 @@
 --
 -- This Script contains the statement handler for the Compound statements (compound add, sub, mul, etc.)
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 local AstKind = Ast.AstKind;
 
 local compoundConstructors = {

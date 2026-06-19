@@ -4,11 +4,11 @@
 --
 -- This Script provides an Obfuscation Step, that breaks the script, when someone tries to tamper with it.
 
-local Step = require("prometheus.step")
-local RandomStrings = require("prometheus.randomStrings")
-local Parser = require("prometheus.parser")
-local Enums = require("prometheus.enums")
-local logger = require("logger")
+local Step = require("../step")
+local RandomStrings = require("../randomStrings")
+local Parser = require("../parser")
+local Enums = require("../enums")
+local logger = require("../../logger")
 
 local AntiTamper = Step:extend()
 AntiTamper.Description = "This Step Breaks your Script when it is modified. This is only effective when using the new VM."

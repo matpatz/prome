@@ -4,7 +4,7 @@
 --
 -- This Script contains the expression handler for the PassSelfFunctionCallExpression.
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 local AstKind = Ast.AstKind;
 
 return function(self, expression, funcDepth, numReturns)

@@ -4,13 +4,12 @@
 --
 -- This Script contains the statement handlers: exports handler table keyed by AstKind.
 
-local Ast = require("prometheus.ast");
+local Ast = require("../ast");
 local AstKind = Ast.AstKind;
 
 local handlers = {};
-local statements = "prometheus.compiler.statements.";
 local function requireStatement(name)
-    return require(statements .. name);
+    return require("./statements/" .. name);
 end
 
 handlers[AstKind.ReturnStatement] = requireStatement("return");

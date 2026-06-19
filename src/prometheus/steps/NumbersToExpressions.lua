@@ -8,11 +8,11 @@
 
 unpack = unpack or table.unpack
 
-local Step = require("prometheus.step")
-local Ast = require("prometheus.ast")
-local visitast = require("prometheus.visitast")
-local util = require("prometheus.util")
-local logger = require("logger")
+local Step = require("../step")
+local Ast = require("../ast")
+local visitast = require("../visitast")
+local util = require("../util")
+local logger = require("../../logger")
 local AstKind = Ast.AstKind
 
 local NumbersToExpressions = Step:extend()

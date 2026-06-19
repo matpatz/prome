@@ -4,7 +4,7 @@
 --
 -- This Script contains the statement handler for the AssignmentStatement.
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 local AstKind = Ast.AstKind;
 
 return function(self, statement, funcDepth)

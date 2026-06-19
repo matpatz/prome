@@ -5,8 +5,8 @@
 -- This Script provides a Logger for Prometheus.
 
 local logger = {}
-local config = require("config");
-local colors = require("colors");
+local config = require("./config");
+local colors = require("./colors");
 
 logger.LogLevel = {
 	Error = 0,
@@ -19,7 +19,7 @@ logger.LogLevel = {
 logger.logLevel = logger.LogLevel.Log;
 
 logger.debugCallback = function(...)
-	print(colors(config.NameUpper .. ": " ..  ..., "grey"));
+	print(colors(config.NameUpper .. ": " .. tostring(...), "grey"));
 end;
 function logger:debug(...)
 	if self.logLevel >= self.LogLevel.Debug then
@@ -28,7 +28,7 @@ function logger:debug(...)
 end
 
 logger.logCallback = function(...)
-	print(colors(config.NameUpper .. ": ", "magenta") .. ...);
+	print(colors(config.NameUpper .. ": ", "magenta") .. tostring(...));
 end;
 function logger:log(...)
 	if self.logLevel >= self.LogLevel.Log then
@@ -43,7 +43,7 @@ function logger:info(...)
 end
 
 logger.warnCallback = function(...)
-	print(colors(config.NameUpper .. ": " .. ..., "yellow"));
+	print(colors(config.NameUpper .. ": " .. tostring(...), "yellow"));
 end;
 function logger:warn(...)
 	if self.logLevel >= self.LogLevel.Warn then
@@ -52,7 +52,7 @@ function logger:warn(...)
 end
 
 logger.errorCallback = function(...)
-	print(colors(config.NameUpper .. ": " .. ..., "red"))
+	print(colors(config.NameUpper .. ": " .. tostring(...), "red"))
 	error(...);
 end;
 function logger:error(...)

@@ -4,7 +4,7 @@
 --
 -- This Script contains the statement handler for the LocalFunctionDeclaration
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 
 return function(self, statement, funcDepth)
     local scope = self.activeBlock.scope;

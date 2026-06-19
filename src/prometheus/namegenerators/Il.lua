@@ -8,7 +8,7 @@ local MIN_CHARACTERS = 5;
 local MAX_INITIAL_CHARACTERS = 10;
 
 
-local util = require("prometheus.util");
+local util = require("../util");
 local chararray = util.chararray;
 
 local offset = 0;

@@ -4,7 +4,7 @@
 --
 -- This Script contains the expression handler for the VarargExpression
 
-local Ast = require("prometheus.ast");
+local Ast = require("../../ast");
 
 return function(self, expression, funcDepth, numReturns)
     local scope = self.activeBlock.scope;

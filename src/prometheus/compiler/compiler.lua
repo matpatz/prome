@@ -4,20 +4,20 @@
 --
 -- This Script is the main compiler module.
 
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
-local util = require("prometheus.util");
+local Ast = require("../ast");
+local Scope = require("../scope");
+local util = require("../util");
 
 local lookupify = util.lookupify;
 local AstKind = Ast.AstKind;
 
 local unpack = unpack or table.unpack;
 
-local blockModule = require("prometheus.compiler.block");
-local registerModule = require("prometheus.compiler.register");
-local upvalueModule = require("prometheus.compiler.upvalue");
-local emitModule = require("prometheus.compiler.emit");
-local compileCoreModule = require("prometheus.compiler.compile_core");
+local blockModule = require("./block");
+local registerModule = require("./register");
+local upvalueModule = require("./upvalue");
+local emitModule = require("./emit");
+local compileCoreModule = require("./compile_core");
 
 local Compiler = {};
 
@@ -167,7 +167,8 @@ function Compiler:compile(ast)
             end
             expression = Ast.FunctionCallExpression(Ast.VariableExpression(self.scope, self.allocUpvalFunction), {});
         else
-            require("logger"):error("Unresolved Upvalue, this error should not occur!");
+            local logger = require("../../logger");
+            logger:error("Unresolved Upvalue, this error should not occur!");
         end
         table.insert(upvalEntries, Ast.TableEntry(expression));
         local uid = #upvalEntries;

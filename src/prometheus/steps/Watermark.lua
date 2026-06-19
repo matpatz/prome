@@ -4,9 +4,9 @@
 --
 -- This Script provides a Step that will add a watermark to the script
 
-local Step = require("prometheus.step");
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
+local Step = require("../step");
+local Ast = require("../ast");
+local Scope = require("../scope");
 
 local Watermark = Step:extend();
 Watermark.Description = "This Step will add a watermark to the script";

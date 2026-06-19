@@ -4,12 +4,12 @@
 --
 -- This Script provides a Simple Obfuscation Step that encrypts strings
 
-local Step = require("prometheus.step")
-local Ast = require("prometheus.ast")
-local Parser = require("prometheus.parser")
-local Enums = require("prometheus.enums")
-local visitast = require("prometheus.visitast");
-local util = require("prometheus.util")
+local Step = require("../step")
+local Ast = require("../ast")
+local Parser = require("../parser")
+local Enums = require("../enums")
+local visitast = require("../visitast");
+local util = require("../util")
 local AstKind = Ast.AstKind;
 
 local EncryptStrings = Step:extend()
@@ -24,10 +24,11 @@ function EncryptStrings:init(_) end
 function EncryptStrings:CreateEncryptionService()
 	local usedSeeds = {};
 
-	local secret_key_6 = math.random(0, 63) -- 6-bit  arbitrary integer (0..63)
-	local secret_key_7 = math.random(0, 127) -- 7-bit  arbitrary integer (0..127)
-	local secret_key_44 = math.random(0, 17592186044415) -- 44-bit arbitrary integer (0..17592186044415)
-	local secret_key_8 = math.random(0, 255); -- 8-bit  arbitrary integer (0..255)
+	local secret_key_6 = math.random(1, 64) - 1  -- 6-bit  arbitrary integer (0..63)
+	local secret_key_7 = math.random(1, 128) - 1 -- 7-bit  arbitrary integer (0..127)
+	-- 44-bit key: LuaU math.random max is 2^31-1, so build from two 22-bit halves
+	local secret_key_44 = math.random(1, 2^22) * math.random(1, 2^22) % 17592186044416
+	local secret_key_8 = math.random(1, 256) - 1; -- 8-bit  arbitrary integer (0..255)
 
 	local floor = math.floor
 
@@ -56,7 +57,8 @@ function EncryptStrings:CreateEncryptionService()
 	local function gen_seed()
 		local seed;
 		repeat
-			seed = math.random(0, 35184372088832);
+			-- Build seed from two halves to avoid integer range limits in LuaU
+			seed = (math.random(1, 2^22) * math.random(1, 2^22)) % 35184372088832;
 		until not usedSeeds[seed];
 		usedSeeds[seed] = true;
 		return seed;

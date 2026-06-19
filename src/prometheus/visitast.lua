@@ -4,8 +4,8 @@
 --
 -- This Script provides a utility function for visiting each node of an AST.
 
-local Ast = require("prometheus.ast");
-local util = require("prometheus.util");
+local Ast = require("./ast");
+local util = require("./util");
 
 local AstKind = Ast.AstKind;
 local lookupify = util.lookupify;

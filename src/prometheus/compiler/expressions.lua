@@ -4,13 +4,12 @@
 --
 -- This Script contains the expression handlers: exports handler table keyed by AstKind.
 
-local Ast = require("prometheus.ast");
+local Ast = require("../ast");
 local AstKind = Ast.AstKind;
 
 local handlers = {};
-local expressions = "prometheus.compiler.expressions.";
 local function requireExpression(name)
-    return require(expressions .. name);
+    return require("./expressions/" .. name);
 end
 handlers[AstKind.StringExpression] = requireExpression("string");
 handlers[AstKind.NumberExpression] = requireExpression("number");

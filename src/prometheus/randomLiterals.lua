@@ -4,8 +4,8 @@
 --
 -- This Script provides a library for creating random literals
 
-local Ast = require("prometheus.ast");
-local RandomStrings = require("prometheus.randomStrings");
+local Ast = require("./ast");
+local RandomStrings = require("./randomStrings");
 
 local RandomLiterals = {};
 

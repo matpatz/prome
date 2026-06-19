@@ -4,9 +4,9 @@
 --
 -- This Script provides a Simple Obfuscation Step that wraps the entire Script into a function
 
-local Step = require("prometheus.step");
-local Ast = require("prometheus.ast");
-local Scope = require("prometheus.scope");
+local Step = require("../step");
+local Ast = require("../ast");
+local Scope = require("../scope");
 
 local WrapInFunction = Step:extend();
 WrapInFunction.Description = "This Step Wraps the Entire Script into a Function";
